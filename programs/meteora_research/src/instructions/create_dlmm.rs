@@ -14,9 +14,6 @@ use crate::meteora::{
     ID as METEORA_PROGRAM_ID,
 };
 
-const ILM_BASE_KEY: Pubkey = pubkey!("MFGQxwAmB91SwuYX36okv2Qmdc9aMuHTwWGUrp4AtB1");
-const ORACLE: &[u8] = b"oracle";
-
 #[derive(Accounts)]
 pub struct CreateDLMM<'info> {
     #[account(
@@ -32,52 +29,19 @@ pub struct CreateDLMM<'info> {
     #[account(constraint = token0_mint.key() < token1_mint.key())]
     pub token1_mint: Box<InterfaceAccount<'info, Mint>>,
 
-    #[account(
-        mut,
-        seeds = [
-            ILM_BASE_KEY.as_ref(),
-            token0_mint.key().as_ref(),
-            token1_mint.key().as_ref(),
-        ],
-        seeds::program = meteora_program.key(),
-        bump,
-    )]
+    #[account(mut)]
     /// CHECK: No checks are performed
     pub lb_pair: UncheckedAccount<'info>,
 
-    #[account(
-        mut,
-        seeds = [
-            lb_pair.key().as_ref(),
-            token0_mint.key().as_ref(),
-        ],
-        bump,
-        seeds::program = meteora_program.key(),
-    )]
+    #[account(mut)]
     /// CHECK: No checks are performed
     pub reserves_token0: UncheckedAccount<'info>,
 
-    #[account(
-        mut,
-        seeds = [
-            lb_pair.key().as_ref(),
-            token1_mint.key().as_ref(),
-        ],
-        bump,
-        seeds::program = meteora_program.key(),
-    )]
+    #[account(mut)]
     /// CHECK: No checks are performed
     pub reserves_token1: UncheckedAccount<'info>,
 
-    #[account(
-        mut,
-        seeds = [
-            ORACLE,
-            lb_pair.key().as_ref(),
-        ],
-        bump,
-        seeds::program = meteora_program.key(),
-    )]
+    #[account(mut)]
     /// CHECK: No checks are performed
     pub oracle: UncheckedAccount<'info>,
 
@@ -98,6 +62,9 @@ pub struct CreateDLMM<'info> {
         associated_token::token_program = token_program,
     )]
     pub funder_token1_account: Box<InterfaceAccount<'info, TokenAccount>>,
+
+    /// CHECK: No checks are performed
+    pub event_authority: UncheckedAccount<'info>,
 
     pub system_program: Program<'info, System>,
     pub token_program: Interface<'info, TokenInterface>,
@@ -138,7 +105,7 @@ pub fn create_dlmm(ctx: &Context<CreateDLMM>, active_id: i32) -> Result<()> {
         oracle: ctx.accounts.oracle.to_account_info(),
         rent: ctx.accounts.rent.to_account_info(),
 
-        event_authority: ctx.accounts.meteora_program.to_account_info(),
+        event_authority: ctx.accounts.event_authority.to_account_info(),
     };
 
     let cpi_ctx = CpiContext::new(ctx.accounts.meteora_program.to_account_info(), cpi_accounts);

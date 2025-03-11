@@ -195,9 +195,14 @@ describe("meteora_research", () => {
       METEORA_LB_CLMM
     );
 
+    const [eventAuthority] = PublicKey.findProgramAddressSync(
+      [Buffer.from("__event_authority", "utf-8"), METEORA_LB_CLMM.toBuffer()],
+      METEORA_LB_CLMM
+    );
+
     const tx = await creatorProgram.methods
       .createMeteoraDlmm(initialBin)
-      .accountsPartial({
+      .accounts({
         token0Mint: token0Mint,
         token1Mint: token1Mint,
         tokenProgram: TOKEN_PROGRAM_ID,
@@ -205,8 +210,8 @@ describe("meteora_research", () => {
         lbPair,
         reservesToken0,
         reservesToken1,
-        funderToken0Account: creatorToken0ATA,
         oracle,
+        eventAuthority,
       })
       .rpc();
 
