@@ -4,7 +4,10 @@ import { MeteoraResearch } from "../target/types/meteora_research";
 import { BankrunProvider } from "anchor-bankrun";
 import { BanksClient, ProgramTestContext, startAnchor } from "solana-bankrun";
 import { type Keypair, PublicKey, Connection } from "@solana/web3.js";
-import { SYSTEM_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/native/system";
+import {
+  program,
+  SYSTEM_PROGRAM_ID,
+} from "@coral-xyz/anchor/dist/cjs/native/system";
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 import {
   createMint,
@@ -78,6 +81,20 @@ describe("meteora_research", () => {
     );
 
     banksClient = context.banksClient;
+
+    const meteoraMainnetAccount = await mainnetConnection.getAccountInfo(
+      METEORA_LB_CLMM,
+      "confirmed"
+    );
+
+    console.info("meteoraMainnetAccount", meteoraMainnetAccount);
+
+    const meteoraAccount = await banksClient.getAccount(
+      METEORA_LB_CLMM,
+      "confirmed"
+    );
+
+    console.info("meteoraAccount", meteoraAccount);
 
     creatorProvider = new BankrunProvider(context, new NodeWallet(creator));
     creatorProgram = new Program(IDL, creatorProvider);

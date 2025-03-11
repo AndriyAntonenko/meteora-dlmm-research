@@ -5,7 +5,6 @@ use anchor_spl::{
 };
 
 use crate::meteora::{
-    accounts::{LbPair, Oracle},
     cpi::{
         accounts::InitializeCustomizablePermissionlessLbPair,
         initialize_customizable_permissionless_lb_pair,
@@ -138,6 +137,8 @@ pub fn create_dlmm(ctx: &Context<CreateDLMM>, active_id: i32) -> Result<()> {
         program: ctx.accounts.meteora_program.to_account_info(),
         oracle: ctx.accounts.oracle.to_account_info(),
         rent: ctx.accounts.rent.to_account_info(),
+
+        event_authority: ctx.accounts.meteora_program.to_account_info(),
     };
 
     let cpi_ctx = CpiContext::new(ctx.accounts.meteora_program.to_account_info(), cpi_accounts);

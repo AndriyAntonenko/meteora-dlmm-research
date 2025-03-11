@@ -4,6 +4,7 @@
   "metadata": {
     "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo"
   },
+  "constants": [],
   "instructions": [
     {
       "name": "initializeLbPair",
@@ -236,6 +237,11 @@
         },
         {
           "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "eventAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -4785,5 +4791,336 @@
       ]
     }
   ],
-  "errors": []
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidStartBinIndex",
+      "msg": "Invalid start bin index"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidBinId",
+      "msg": "Invalid bin id"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidInput",
+      "msg": "Invalid input data"
+    },
+    {
+      "code": 6003,
+      "name": "ExceededAmountSlippageTolerance",
+      "msg": "Exceeded amount slippage tolerance"
+    },
+    {
+      "code": 6004,
+      "name": "ExceededBinSlippageTolerance",
+      "msg": "Exceeded bin slippage tolerance"
+    },
+    {
+      "code": 6005,
+      "name": "CompositionFactorFlawed",
+      "msg": "Composition factor flawed"
+    },
+    {
+      "code": 6006,
+      "name": "NonPresetBinStep",
+      "msg": "Non preset bin step"
+    },
+    {
+      "code": 6007,
+      "name": "ZeroLiquidity",
+      "msg": "Zero liquidity"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidPosition",
+      "msg": "Invalid position"
+    },
+    {
+      "code": 6009,
+      "name": "BinArrayNotFound",
+      "msg": "Bin array not found"
+    },
+    {
+      "code": 6010,
+      "name": "InvalidTokenMint",
+      "msg": "Invalid token mint"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidAccountForSingleDeposit",
+      "msg": "Invalid account for single deposit"
+    },
+    {
+      "code": 6012,
+      "name": "PairInsufficientLiquidity",
+      "msg": "Pair insufficient liquidity"
+    },
+    {
+      "code": 6013,
+      "name": "InvalidFeeOwner",
+      "msg": "Invalid fee owner"
+    },
+    {
+      "code": 6014,
+      "name": "InvalidFeeWithdrawAmount",
+      "msg": "Invalid fee withdraw amount"
+    },
+    {
+      "code": 6015,
+      "name": "InvalidAdmin",
+      "msg": "Invalid admin"
+    },
+    {
+      "code": 6016,
+      "name": "IdenticalFeeOwner",
+      "msg": "Identical fee owner"
+    },
+    {
+      "code": 6017,
+      "name": "InvalidBps",
+      "msg": "Invalid basis point"
+    },
+    {
+      "code": 6018,
+      "name": "MathOverflow",
+      "msg": "Math operation overflow"
+    },
+    {
+      "code": 6019,
+      "name": "TypeCastFailed",
+      "msg": "Type cast error"
+    },
+    {
+      "code": 6020,
+      "name": "InvalidRewardIndex",
+      "msg": "Invalid reward index"
+    },
+    {
+      "code": 6021,
+      "name": "InvalidRewardDuration",
+      "msg": "Invalid reward duration"
+    },
+    {
+      "code": 6022,
+      "name": "RewardInitialized",
+      "msg": "Reward already initialized"
+    },
+    {
+      "code": 6023,
+      "name": "RewardUninitialized",
+      "msg": "Reward not initialized"
+    },
+    {
+      "code": 6024,
+      "name": "IdenticalFunder",
+      "msg": "Identical funder"
+    },
+    {
+      "code": 6025,
+      "name": "RewardCampaignInProgress",
+      "msg": "Reward campaign in progress"
+    },
+    {
+      "code": 6026,
+      "name": "IdenticalRewardDuration",
+      "msg": "Reward duration is the same"
+    },
+    {
+      "code": 6027,
+      "name": "InvalidBinArray",
+      "msg": "Invalid bin array"
+    },
+    {
+      "code": 6028,
+      "name": "NonContinuousBinArrays",
+      "msg": "Bin arrays must be continuous"
+    },
+    {
+      "code": 6029,
+      "name": "InvalidRewardVault",
+      "msg": "Invalid reward vault"
+    },
+    {
+      "code": 6030,
+      "name": "NonEmptyPosition",
+      "msg": "Position is not empty"
+    },
+    {
+      "code": 6031,
+      "name": "UnauthorizedAccess",
+      "msg": "Unauthorized access"
+    },
+    {
+      "code": 6032,
+      "name": "InvalidFeeParameter",
+      "msg": "Invalid fee parameter"
+    },
+    {
+      "code": 6033,
+      "name": "MissingOracle",
+      "msg": "Missing oracle account"
+    },
+    {
+      "code": 6034,
+      "name": "InsufficientSample",
+      "msg": "Insufficient observation sample"
+    },
+    {
+      "code": 6035,
+      "name": "InvalidLookupTimestamp",
+      "msg": "Invalid lookup timestamp"
+    },
+    {
+      "code": 6036,
+      "name": "BitmapExtensionAccountIsNotProvided",
+      "msg": "Bitmap extension account is not provided"
+    },
+    {
+      "code": 6037,
+      "name": "CannotFindNonZeroLiquidityBinArrayId",
+      "msg": "Cannot find non-zero liquidity binArrayId"
+    },
+    {
+      "code": 6038,
+      "name": "BinIdOutOfBound",
+      "msg": "Bin id out of bound"
+    },
+    {
+      "code": 6039,
+      "name": "InsufficientOutAmount",
+      "msg": "Insufficient amount in for minimum out"
+    },
+    {
+      "code": 6040,
+      "name": "InvalidPositionWidth",
+      "msg": "Invalid position width"
+    },
+    {
+      "code": 6041,
+      "name": "ExcessiveFeeUpdate",
+      "msg": "Excessive fee update"
+    },
+    {
+      "code": 6042,
+      "name": "PoolDisabled",
+      "msg": "Pool disabled"
+    },
+    {
+      "code": 6043,
+      "name": "InvalidPoolType",
+      "msg": "Invalid pool type"
+    },
+    {
+      "code": 6044,
+      "name": "ExceedMaxWhitelist",
+      "msg": "Whitelist for wallet is full"
+    },
+    {
+      "code": 6045,
+      "name": "InvalidIndex",
+      "msg": "Invalid index"
+    },
+    {
+      "code": 6046,
+      "name": "RewardNotEnded",
+      "msg": "Reward not ended"
+    },
+    {
+      "code": 6047,
+      "name": "MustWithdrawnIneligibleReward",
+      "msg": "Must withdraw ineligible reward"
+    },
+    {
+      "code": 6048,
+      "name": "UnauthorizedAddress",
+      "msg": "Unauthorized address"
+    },
+    {
+      "code": 6049,
+      "name": "OperatorsAreTheSame",
+      "msg": "Cannot update because operators are the same"
+    },
+    {
+      "code": 6050,
+      "name": "WithdrawToWrongTokenAccount",
+      "msg": "Withdraw to wrong token account"
+    },
+    {
+      "code": 6051,
+      "name": "WrongRentReceiver",
+      "msg": "Wrong rent receiver"
+    },
+    {
+      "code": 6052,
+      "name": "AlreadyPassActivationPoint",
+      "msg": "Already activated"
+    },
+    {
+      "code": 6053,
+      "name": "ExceedMaxSwappedAmount",
+      "msg": "Swapped amount is exceeded max swapped amount"
+    },
+    {
+      "code": 6054,
+      "name": "InvalidStrategyParameters",
+      "msg": "Invalid strategy parameters"
+    },
+    {
+      "code": 6055,
+      "name": "LiquidityLocked",
+      "msg": "Liquidity locked"
+    },
+    {
+      "code": 6056,
+      "name": "BinRangeIsNotEmpty",
+      "msg": "Bin range is not empty"
+    },
+    {
+      "code": 6057,
+      "name": "NotExactAmountOut",
+      "msg": "Amount out is not matched with exact amount out"
+    },
+    {
+      "code": 6058,
+      "name": "InvalidActivationType",
+      "msg": "Invalid activation type"
+    },
+    {
+      "code": 6059,
+      "name": "InvalidActivationDuration",
+      "msg": "Invalid activation duration"
+    },
+    {
+      "code": 6060,
+      "name": "MissingTokenAmountAsTokenLaunchProof",
+      "msg": "Missing token amount as token launch owner proof"
+    },
+    {
+      "code": 6061,
+      "name": "InvalidQuoteToken",
+      "msg": "Quote token must be SOL or USDC"
+    },
+    {
+      "code": 6062,
+      "name": "InvalidBinStep",
+      "msg": "Invalid bin step"
+    },
+    {
+      "code": 6063,
+      "name": "InvalidBaseFee",
+      "msg": "Invalid base fee"
+    },
+    {
+      "code": 6064,
+      "name": "InvalidPreActivationDuration",
+      "msg": "Invalid pre-activation duration"
+    },
+    {
+      "code": 6065,
+      "name": "AlreadyPassPreActivationSwapPoint",
+      "msg": "Already pass pre-activation swap point"
+    }
+  ]
 }
